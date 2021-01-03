@@ -1,9 +1,8 @@
 import json
+import os
 
 import requests
 from tweepy import StreamListener
-
-from app import config
 
 
 class Listener(StreamListener):
@@ -13,7 +12,7 @@ class Listener(StreamListener):
         tweet_data = json.loads(data)
         try:
             tweet = tweet_data["text"]
-            req = self.telegram_url.format(os.environ.get("telegramBotApiKey"), config.TELEGRAM_CHANNEL_NAME, tweet)
+            req = self.telegram_url.format(os.environ.get("telegramBotApiKey"), "@crypto_trackr", tweet)
             requests.get(req)
             pass
         except Exception as e:

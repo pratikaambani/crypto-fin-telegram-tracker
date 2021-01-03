@@ -1,9 +1,9 @@
+import os
 from time import sleep
 
 import tweepy
 from tweepy import OAuthHandler
 
-from app import config
 from app.listener import Listener
 
 if __name__ == '__main__':
